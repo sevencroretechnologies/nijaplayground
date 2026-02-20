@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palaksh Podar Learn School — Content Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary:    #34495E;
+    --secondary:  #161616;
+    --text-color: #727272;
+    --accent:     #8E44AD;
+    --orange:     #E67E22;
+    --green:      #27AE60;
+    --light-gray: #DADADA;
+    --off-white:  #F2F2F2;
+    --white:      #FFFFFF;
+    --purple-deep:#401F4E;
+
+    --ink:        #401F4E;
+    --gold:       #8E44AD;
+    --gold-mid:   #C39BD3;
+    --slate:      #727272;
+    --rule:       #DADADA;
+    --bg:         #F2F2F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 0;
+  }
+
+  .page-header {
+    background: var(--ink);
+    padding: 3rem 5rem 2.5rem;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .page-header h1 span {
+    color: var(--gold-mid);
+  }
+
+  .page-header .meta {
+    text-align: right;
+  }
+
+  .page-header .meta p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  .page-header .meta p strong {
+    color: var(--gold-mid);
+    font-weight: 500;
+  }
+
+  .instructions-bar {
+    background: var(--accent);
+    padding: 1.2rem 5rem;
+  }
+
+  .instructions-bar h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .instructions-bar ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .instructions-bar ol li {
+    background: var(--ink);
+    color: var(--white);
+    font-size: 0.73rem;
+    font-weight: 400;
+    padding: 6px 16px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .instructions-bar ol li .step-num {
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.62rem;
+    font-weight: 700;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  main {
+    padding: 3rem 5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .page-block {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+  }
+
+  .page-strip {
+    background: var(--accent);
+    padding: 1.1rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .page-strip .page-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.2);
+    line-height: 1;
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .page-strip .page-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .page-strip .page-desc {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+
+  .sections-body {
+    background: var(--white);
+    padding: 1.6rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-block {
+    border-radius: 6px;
+    border: 1px solid var(--light-gray);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .section-header {
+    background: var(--ink);
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-header .sec-num {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+  }
+
+  .section-header .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .content-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .content-table thead th {
+    background: rgba(142,68,173,0.08);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 0.6rem 1.2rem;
+    text-align: left;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .content-table thead th:first-child {
+    width: 35%;
+  }
+
+  .content-table thead th:nth-child(2) {
+    width: 55%;
+  }
+
+  .content-table thead th:last-child {
+    width: 10%;
+    text-align: center;
+  }
+
+  .content-table tbody td {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.82rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .content-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .content-table tbody td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .content-table tbody td:nth-child(2) {
+    color: var(--slate);
+    font-size: 0.78rem;
+  }
+
+  .content-table tbody td:last-child {
+    text-align: center;
+    color: var(--slate);
+    font-size: 0.85rem;
+  }
+
+  .content-table tbody tr:nth-child(even) {
+    background: rgba(142,68,173,0.03);
+  }
+
+  .status-pill {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 3px;
+    background: rgba(142,68,173,0.1);
+    color: var(--accent);
+  }
+
+  .page-footer {
+    background: var(--ink);
+    padding: 1.5rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-footer p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  .page-footer span { color: var(--gold-mid); }
+
+  @media print {
+    body { background: #fff; }
+    .page-block { box-shadow: none; break-inside: avoid; }
+    .section-block { break-inside: avoid; }
+    main { padding: 1.5rem 2rem; }
+    .page-header, .instructions-bar, .page-footer { padding-left: 2rem; padding-right: 2rem; }
+  }
+
+  @media (max-width: 900px) {
+    .page-header, main, .instructions-bar, .page-footer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .page-header .meta {
+      text-align: left;
+    }
+    .instructions-bar ol {
+      flex-direction: column;
+    }
+    .content-table thead th:last-child,
+    .content-table tbody td:last-child {
+      display: none;
+    }
+    .content-table thead th:first-child { width: 40%; }
+    .content-table thead th:nth-child(2) { width: 60%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <h1>Palaksh Podar Learn School<br><span>Content Checklist</span></h1>
+  </div>
+  <div class="meta">
+    <p>Prepared by: <strong>Nammura Media</strong></p>
+    <p>For: <strong>School Management</strong></p>
+    <p>Please collect and share all items below before website development begins.</p>
+  </div>
+</div>
+
+<div class="instructions-bar">
+  <h2>How to Use This Checklist</h2>
+  <ol>
+    <li><span class="step-num">1</span> Collect all content items listed below for each page of the website.</li>
+    <li><span class="step-num">2</span> Share files via Google Drive or WhatsApp to Nammura Media.</li>
+    <li><span class="step-num">3</span> All images should be high resolution (minimum 1 MB). All text in Word, Google Doc, or WhatsApp message.</li>
+  </ol>
+</div>
+
+<main>
+
+  <!-- PAGE 1 — HOME -->
+  <div class="page-block">
+    <div class="page-strip">
+      <div class="page-num">01</div>
+      <div class="page-name">Home</div>
+      <div class="page-desc">8 Sections</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 01</span>
+          <span class="sec-title">Hero Banner</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>School Tagline / Motto</td><td>1–2 inspiring lines that reflect the school's vision</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Hero Banner Image</td><td>High-res photo — school entrance, campus aerial, or students (min 2 MB)</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>CTA Button Text</td><td>Exact wording — e.g. 'Book a Campus Tour'</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 02</span>
+          <span class="sec-title">Our Vision &amp; Mission</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Vision Statement</td><td>2–4 sentences — what the school aspires to be</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Mission Statement</td><td>2–4 sentences — how the school achieves its vision</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 03</span>
+          <span class="sec-title">Video Section</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Section Heading</td><td>e.g. 'Discover Our Campus'</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Section Tagline</td><td>1 supporting line below the heading</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Campus / Story Video</td><td>MP4 file or YouTube link — school story or campus walkthrough</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 04</span>
+          <span class="sec-title">Chairman's Message</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Chairman's Photo</td><td>Professional portrait, high-res, formal attire</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Chairman's Full Name &amp; Designation</td><td>Exact spelling for display on website</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Message / Quote</td><td>100–200 words from the Chairman about the school's journey</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 05</span>
+          <span class="sec-title">Milestones</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Years of Experience</td><td>Exact number — e.g. '25 Years'</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Total Students Graduated</td><td>Approximate count — e.g. '5000+'</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Total Faculty Members</td><td>Current confirmed count — e.g. '30+'</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 06</span>
+          <span class="sec-title">Why Choose Us</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>3 Key Reasons / USPs</td><td>Each with a short heading + 1–2 line description</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Icons or Images (optional)</td><td>One icon or image per USP card if available</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 07</span>
+          <span class="sec-title">Book a Campus Tour</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>School Address</td><td>Full postal address for map pin</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Google Maps Link</td><td>Exact location pin link from Google Maps</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Contact Number</td><td>Phone number for tour enquiries</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Office / Enquiry Hours</td><td>e.g. Monday–Saturday, 9:00 AM – 4:00 PM</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 08</span>
+          <span class="sec-title">Footer</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>School Logo (PNG, transparent)</td><td>High-res — white or dark version</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>School Address</td><td>Full address for footer display</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Phone Number(s)</td><td>Primary and alternate number if any</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Email Address</td><td>Official school email</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Social Media Links</td><td>Facebook, Instagram, YouTube — share page handles or URLs</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE 2 — ABOUT US -->
+  <div class="page-block">
+    <div class="page-strip">
+      <div class="page-num">02</div>
+      <div class="page-name">About Us</div>
+      <div class="page-desc">6 Sections</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 01</span>
+          <span class="sec-title">Vision, Mission &amp; Values</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Vision Statement</td><td>Same as homepage or an expanded version</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Mission Statement</td><td>Same as homepage or an expanded version</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Core Values</td><td>List 3–6 values — e.g. Integrity, Excellence, Compassion</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 02</span>
+          <span class="sec-title">Chairman's &amp; Secretary's Message</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Chairman's Photo</td><td>Same as homepage — professional portrait</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Chairman's Message</td><td>150–250 words</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Secretary's Photo</td><td>Professional portrait, high-res, formal attire</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Secretary's Full Name &amp; Designation</td><td>Exact spelling for display on website</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Secretary's Message</td><td>150–250 words</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 03</span>
+          <span class="sec-title">Video</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>About Us / School Story Video</td><td>MP4 file or YouTube link — school history or introduction</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 04</span>
+          <span class="sec-title">Our Teachers</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Management Board Members</td><td>Name, designation, and photo for each member</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Faculty List</td><td>Name, subject or department, and photo for each faculty member</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Short Bio (optional)</td><td>2–3 lines per faculty member if available</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 05</span>
+          <span class="sec-title">Infrastructure Gallery</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Science Lab Photos</td><td>Minimum 2–3 high-res photos</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Computer Lab Photos</td><td>Minimum 2–3 high-res photos</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Library Photos</td><td>Minimum 2–3 high-res photos</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Classroom Photos</td><td>Minimum 2–3 high-res photos</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>School Building / Exterior Photos</td><td>Minimum 2–3 high-res photos</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 06</span>
+          <span class="sec-title">Book a Campus Tour</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Tour Booking Contact / Form Details</td><td>Same details as Homepage Section 07</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE 3 — CAMPUS LIFE -->
+  <div class="page-block">
+    <div class="page-strip">
+      <div class="page-num">03</div>
+      <div class="page-name">Campus Life</div>
+      <div class="page-desc">4 Sections</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 01</span>
+          <span class="sec-title">Gallery</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>General Campus Photos</td><td>Minimum 10–15 high-res photos covering various areas of the school</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Event / Celebration Photos</td><td>Annual day, sports day, cultural events, prize distribution etc.</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Student Activity Photos</td><td>Students in class, labs, sports, arts — candid and formal</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 02</span>
+          <span class="sec-title">Labs, Library &amp; Sports</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Science Lab Photos + Description</td><td>2–3 photos + 2–3 lines describing the lab facilities</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Computer Lab Photos + Description</td><td>2–3 photos + 2–3 lines describing the lab facilities</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Library Photos + Description</td><td>2–3 photos + 2–3 lines describing the library</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Sports Facilities Photos + Description</td><td>Ground, court, equipment photos + short description</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 03</span>
+          <span class="sec-title">Clubs &amp; Activities</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>List of Clubs / Activities</td><td>e.g. Science Club, Art Club, Debate, Dance, Music, etc.</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Photos for Each Club / Activity</td><td>1–2 photos per activity</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Short Description per Activity</td><td>1–2 lines describing each club or activity</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 04</span>
+          <span class="sec-title">Transport &amp; Safety</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Transport Routes / Coverage Areas</td><td>List of areas or localities covered by school bus</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Bus / Vehicle Photos</td><td>1–2 photos of school transport vehicles</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Safety Measures Description</td><td>CCTV, security, supervision policy — 3–5 lines</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Transport Contact Details</td><td>Person or number to contact for transport enquiries</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE 4 — NEWS -->
+  <div class="page-block">
+    <div class="page-strip">
+      <div class="page-num">04</div>
+      <div class="page-name">News</div>
+      <div class="page-desc">2 Sections</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 01</span>
+          <span class="sec-title">News Listing Page</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Recent News Items (minimum 3)</td><td>Headline + date + 2–3 line summary for each item</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>News Thumbnail Images</td><td>1 high-res image per news article</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 02</span>
+          <span class="sec-title">Individual News Detail Page</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Full News Article Content</td><td>Complete article text for each news item</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Article Photos</td><td>1–3 photos per article</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Author Name &amp; Date</td><td>Name of the publisher and the publish date</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE 5 — CONTACT US -->
+  <div class="page-block">
+    <div class="page-strip">
+      <div class="page-num">05</div>
+      <div class="page-name">Contact Us</div>
+      <div class="page-desc">3 Sections</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 01</span>
+          <span class="sec-title">Contact Details</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>School Name (official)</td><td>Full official name for display on the contact page</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Phone Number(s)</td><td>Primary + alternate contact numbers</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Email Address(es)</td><td>Admissions email + general enquiry email</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Full Postal Address</td><td>Complete address including pin code</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Office / Enquiry Hours</td><td>e.g. Monday–Saturday, 9:00 AM – 4:00 PM</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 02</span>
+          <span class="sec-title">Location Map</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Google Maps Location Link</td><td>Share the exact pin from Google Maps</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Nearby Landmark</td><td>1–2 landmarks to help visitors locate the school easily</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Section 03</span>
+          <span class="sec-title">Inquiry Form</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Form Fields Required</td><td>Confirm: Name, Phone, Email, Class Interested, Message</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Form Submission Email</td><td>Which email should receive the form submissions</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Thank You / Confirmation Message</td><td>Message to show after the form is submitted successfully</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GENERAL ASSETS -->
+  <div class="page-block">
+    <div class="page-strip" style="background: var(--ink);">
+      <div class="page-num" style="color: rgba(255,255,255,0.3);">&#9733;</div>
+      <div class="page-name">General Assets</div>
+      <div class="page-desc">Required for Entire Website</div>
+    </div>
+    <div class="sections-body">
+
+      <div class="section-block">
+        <div class="section-header">
+          <span class="sec-num">Branding &amp; Assets</span>
+          <span class="sec-title">Logos, Colors &amp; Domain</span>
+        </div>
+        <table class="content-table">
+          <thead><tr><th>Content Item</th><th>Notes / Format Required</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>School Logo (PNG, transparent background)</td><td>High-res — suitable for use on white background</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>School Logo (White version)</td><td>For use on dark or purple backgrounds</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Favicon</td><td>Small square logo at 512 x 512 px — used in browser tab</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Brand Colors (if any)</td><td>Primary and secondary colors if school has brand guidelines</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Preferred Font (if any)</td><td>School's preferred font — or leave creative choice to Nammura Media</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Domain Name Confirmation</td><td>Exact website URL — e.g. palakshpodar.edu.in</td><td><span class="status-pill">Pending</span></td></tr>
+            <tr><td>Reference Websites (optional)</td><td>2–3 school websites you like for design inspiration</td><td><span class="status-pill">Pending</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<div class="page-footer">
+  <p>Created by <span>Nammura Media</span></p>
+</div>
+
+</body>
+</html>
