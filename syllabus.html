@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4th Semester ECE Syllabus Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a237e;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .progress-bar-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 24px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #43a047, #66bb6a);
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .columns-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .subject-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .subject-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .subject-header {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: #fff;
+            padding: 16px 20px;
+        }
+
+        .subject-header h2 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .subject-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .subject-meta span {
+            background: rgba(255,255,255,0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .module {
+            border-bottom: 1px solid #eee;
+            padding: 12px 20px;
+        }
+
+        .module:last-of-type {
+            border-bottom: none;
+        }
+
+        .module-title {
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .module-title .toggle-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .module-title.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .module-topics {
+            list-style: none;
+            padding: 0;
+        }
+
+        .module-topics.hidden {
+            display: none;
+        }
+
+        .module-topics li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 5px 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .module-topics li input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: #43a047;
+            cursor: pointer;
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .module-topics li label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .module-topics li label.checked {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .textbooks {
+            background: #f9fbe7;
+            padding: 12px 20px;
+            border-top: 2px solid #e8eaf6;
+        }
+
+        .textbooks h3 {
+            font-size: 0.85rem;
+            color: #33691e;
+            margin-bottom: 6px;
+        }
+
+        .textbooks ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .textbooks li {
+            font-size: 0.8rem;
+            color: #555;
+            padding: 3px 0;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .textbooks li::before {
+            content: "\25B8";
+            position: absolute;
+            left: 0;
+            color: #33691e;
+        }
+
+        .ref-books {
+            background: #fff3e0;
+            border-top: none;
+        }
+
+        .ref-books h3 {
+            color: #e65100;
+        }
+
+        .ref-books li::before {
+            color: #e65100;
+        }
+
+        @media (max-width: 768px) {
+            .columns-container {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>4th Semester ECE - Syllabus Checklist</h1>
+    <p class="subtitle">VTU | B.E. Electronics &amp; Communication Engineering | NEP 2023-24</p>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="overallProgress"></div>
+        <div class="progress-text" id="overallProgressText">0 / 0 topics completed</div>
+    </div>
+
+    <div class="columns-container">
+
+        <!-- ============ SUBJECT 1: Electromagnetic Theory ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Electromagnetic Theory</h2>
+                <div class="subject-meta">
+                    <span>Code: BEC401</span>
+                    <span>Credits: 03</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 1: Coulomb's Law, Electric Field Intensity &amp; Flux Density
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Revision of Vector Calculus</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Experimental Law of Coulomb</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Electric Field Intensity</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Field due to Continuous Volume Charge Distribution</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Field of a Line Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Field due to Sheet of Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Electric Flux Density</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Numerical Problems</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 2: Gauss's Law and Divergence
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Gauss's Law</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Application of Gauss's Law to Point Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Application to Line Charge, Surface Charge &amp; Volume Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Point (Differential) Form of Gauss's Law, Divergence</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Maxwell's First Equation (Electrostatics)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Vector Operator and Divergence Theorem</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Energy Expended / Work Done in Moving a Point Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>The Line Integral</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Current and Current Density, Continuity of Current</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Numerical Problems</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 3: Poisson's &amp; Laplace's Equations / Steady Magnetic Field
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Derivation of Poisson's and Laplace's Equations</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Examples of Solution of Laplace's Equation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Numerical Problems on Laplace's Equation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Biot-Savart Law</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Ampere's Circuital Law</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Curl</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Stokes' Theorem</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Magnetic Flux and Magnetic Flux Density</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 4: Magnetic Forces &amp; Magnetic Materials
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Force on a Moving Charge</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Differential Current Elements</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Force Between Differential Current Elements</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Magnetization and Permeability</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Magnetic Boundary Conditions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>The Magnetic Circuit</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Numerical Problems</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 5: Maxwell's Equations &amp; Uniform Plane Wave
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Faraday's Law - Integral Form and Point Form</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Inconsistency of Ampere's Law with Continuity Equation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Displacement Current, Conduction Current</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Derivation of Maxwell's Equations (Point &amp; Integral Form)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Maxwell's Equations for Different Media</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Wave Propagation in Free Space</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Derivation of Plane Wave Equations from Maxwell's Equations</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Poynting's Theorem and Wave Power</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Skin Effect / Depth of Penetration</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Numerical Problems</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Book</h3>
+                <ul>
+                    <li>W.H. Hayt and J.A. Buck, "Engineering Electromagnetics", 8th Edition, Tata McGraw-Hill, 2014</li>
+                </ul>
+            </div>
+            <div class="textbooks ref-books">
+                <h3>Reference Books</h3>
+                <ul>
+                    <li>Elements of Electromagnetics - Matthew N.O. Sadiku, Oxford University Press, 4th Edn.</li>
+                    <li>Electromagnetic Waves and Radiating Systems - E.C. Jordan &amp; K.G. Balman, PHI, 2nd Edn.</li>
+                    <li>Electromagnetics - Joseph Edminister, Schaum Outline Series, McGraw Hill</li>
+                    <li>N. Narayana Rao, "Fundamentals of Electromagnetics for Engineering", Pearson</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============ SUBJECT 2: Principles of Communication Systems ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Principles of Communication Systems</h2>
+                <div class="subject-meta">
+                    <span>Code: BEC402</span>
+                    <span>Credits: 04</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 1: Random Variables and Processes
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Introduction to Probability</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Conditional Probability</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Random Variables</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Function of a Random Variable, Moments</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Random Processes, Mean</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Correlation and Covariance Function</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Properties of Autocorrelation Function</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Cross-Correlation Functions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Gaussian Process &amp; Distribution Function</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 2: Amplitude Modulation
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>AM Concepts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Modulation Index and Percentage of Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Sidebands and the Frequency Domain</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>AM Power</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Single Sideband Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Amplitude Modulators: Diode, Transistor, Collector Modulator</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Amplitude Demodulators: Diode Detector</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Balanced Modulators: Lattice Modulators</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Frequency Division Multiplexing</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 3: Frequency Modulation
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Basic Principles of Frequency Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Principles of Phase Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Modulation Index and Sidebands</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Noise Suppression Effects of FM</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>FM vs AM Comparison</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Frequency Modulators: Voltage Controlled Oscillators</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Frequency Demodulators: Slope Detectors, PLL</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Superheterodyne Receiver</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Frequency Conversion: Mixing Principles, JFET Mixer</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 4: Digital Representation of Analog Signals
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>The Sampling Process</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Pulse Amplitude Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Time-Division Multiplexing</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Pulse Position Modulation: Generation &amp; Detection</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>The Quantization Process</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>PCM: Sampling, Quantization, Encoding</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Line Codes, Differential Encoding</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Regeneration, Decoding, Filtering, Multiplexing</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 5: Baseband Transmission &amp; Noise
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Intersymbol Interference</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Eye Pattern</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Nyquist Criterion for Distortionless Transmission</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Baseband M-ary PAM Transmission</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Signal to Noise Ratio</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>External Noise &amp; Internal Noise</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Semiconductor Noise</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Expressing Noise Levels, Noise in Cascade Stages</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Books</h3>
+                <ul>
+                    <li>Louis E Frenzel, "Principles of Electronic Communication Systems", 3rd Edition, McGraw Hill, 2016</li>
+                    <li>Simon Haykin &amp; Michael Moher, "Communication Systems", 5th Edition, John Wiley, 2010</li>
+                </ul>
+            </div>
+            <div class="textbooks ref-books">
+                <h3>Reference Books</h3>
+                <ul>
+                    <li>B P Lathi, Zhi Ding, "Modern Digital and Analog Communication Systems", Oxford, 4th Edition</li>
+                    <li>Herbert Taub, Donald L Schilling, Goutam Saha, "Principles of Communication Systems", 4th Edition, McGraw Hill</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============ SUBJECT 3: Control Systems ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Control Systems</h2>
+                <div class="subject-meta">
+                    <span>Code: BEC403</span>
+                    <span>Credits: 04</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 1: Introduction to Control Systems
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Types of Control Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Effect of Feedback Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Differential Equation of Physical Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Mechanical Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Electrical Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Analogous Systems</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 2: Block Diagrams and Signal Flow Graphs
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Transfer Functions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Block Diagram Algebra</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Signal Flow Graphs</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 3: Time Response of Feedback Control Systems
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Standard Test Signals</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Unit Step Response of First &amp; Second Order Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Time Response Specifications</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Time Response Specifications of Second Order Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Steady State Errors and Error Constants</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Introduction to PI, PD and PID Controllers</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 4: Stability Analysis
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Concepts of Stability</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Necessary Conditions for Stability</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Routh Stability Criterion</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Relative Stability Analysis</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Introduction to Root-Locus Techniques</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Root Locus Concepts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Construction of Root Loci</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 5: Frequency Domain Analysis &amp; State Variable Analysis
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Correlation Between Time and Frequency Response</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Bode Plots</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Experimental Determination of Transfer Function</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Nyquist Stability Criterion</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Concepts of State, State Variable &amp; State Models</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>State Model for Linear Continuous-Time Systems</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Solution of State Equations</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Book</h3>
+                <ul>
+                    <li>I.J. Nagrath, M. Gopal, "Control Systems Engineering", New Age International Publishers, 5th Edition</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============ SUBJECT 4: Communication Laboratory ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Communication Laboratory</h2>
+                <div class="subject-meta">
+                    <span>Code: BECL404</span>
+                    <span>Credits: 01</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Experiments (Hardware)
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design &amp; test High-Level Collector Modulator &amp; Diode Detector Demodulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Test the Balanced Modulator / Lattice Modulator (Diode Ring)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design FM Modulator using VCO &amp; FM Demodulator using PLL (IC566, IC565)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design &amp; plot frequency response of Pre-emphasis &amp; De-emphasis Circuits</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design &amp; test BJT/FET Mixer</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design &amp; test Pulse Sampling, Flat Top Sampling &amp; Reconstruction</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Design &amp; test Pulse Amplitude Modulation &amp; Demodulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Generation &amp; Detection of Pulse Position Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Generation &amp; Detection of Pulse Width Modulation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>PLL Frequency Synthesizer</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Data Formatting and Line Code Generation</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>PCM Multiplexer and Demultiplexer</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Book</h3>
+                <ul>
+                    <li>Louis E Frenzel, "Principles of Electronic Communication Systems", 3rd Edition, McGraw Hill, 2016</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============ SUBJECT 5: Microcontrollers ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Microcontrollers</h2>
+                <div class="subject-meta">
+                    <span>Code: BEC405A</span>
+                    <span>Credits: 03</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 1: Microcontroller Architecture
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Microprocessor Vs Microcontroller</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Microcontroller &amp; Embedded Processors</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Processor Architectures: Harvard Vs Princeton &amp; RISC Vs CISC</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>8051 Architecture - Registers</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Pin Diagram, I/O Port Functions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Internal Memory Organization</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>External Memory (ROM &amp; RAM) Interfacing</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 2: Instruction Set
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>8051 Addressing Modes</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Data Transfer Instructions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Arithmetic Instructions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Logical Instructions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Jump &amp; Call Instructions</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Stack &amp; Subroutine Instructions</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 3: Timers/Counters &amp; Serial Port Programming
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Basics of Timers &amp; Counters</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Data Types &amp; Time Delay in 8051 using C</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Programming 8051 Timers: Mode 1 &amp; Mode 2</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Counter Programming (Assembly Language)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Basics of Serial Communication</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>8051 Connection to RS232</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Programming 8051 for Serial Data Transfer &amp; Receive (C)</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 4: Interrupt Programming
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Basics of Interrupts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>8051 Interrupts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Programming Timer Interrupts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Programming Serial Communication Interrupts</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Interrupt Priority in 8051</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    Module 5: I/O Port Interfacing &amp; Programming
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>I/O Programming in 8051 C</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>LCD Interfacing</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>DAC 0808 Interfacing</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>ADC 0804 Interfacing</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Stepper Motor Interfacing</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>DC Motor Control &amp; PWM</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Books</h3>
+                <ul>
+                    <li>Muhammad Ali Mazidi et al., "The 8051 Microcontroller and Embedded Systems - Using Assembly and C", PHI/Pearson, 2006</li>
+                    <li>Kenneth J. Ayala, "The 8051 Microcontroller", 3rd Edition, Thomson/Cengage Learning</li>
+                    <li>Myke Predko, "Programming and Customizing the 8051 Microcontroller", Tata McGraw-Hill, 1999</li>
+                </ul>
+            </div>
+            <div class="textbooks ref-books">
+                <h3>Reference Books</h3>
+                <ul>
+                    <li>Manish K Patel, "The 8051 Microcontroller Based Embedded Systems", McGraw Hill, 2014</li>
+                    <li>Raj Kamal, "Microcontrollers: Architecture, Programming, Interfacing and System Design", Pearson, 2005</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ============ SUBJECT 6: Microcontrollers Lab ============ -->
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>Microcontrollers Lab</h2>
+                <div class="subject-meta">
+                    <span>Code: BECL456A</span>
+                    <span>Credits: 01</span>
+                    <span>Sem: IV</span>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    I. Assembly Language - Data Transfer Programs
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Move block of n bytes (Internal RAM: 20h to 40h)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Move block of n bytes (External RAM: 2000h to 2050h)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Exchange source block (20h) with destination block (40h) - Internal RAM</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Exchange Internal Memory (10h) with External Memory (00h)</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    I. Assembly Language - Arithmetic &amp; Logical Programs
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Add bytes at RAM 34h &amp; 35h, store in R5 (LSB) &amp; R6 (MSB)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Subtract bytes at 34h &amp; 35h, store result in R5 &amp; R6</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Multiply two 8-bit numbers (30h, 31h), store 16-bit result</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Division of 8-bit number by 8-bit number</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Separate positive and negative in array</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Separate even or odd elements in array</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Arrange numbers in Ascending &amp; Descending order</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Find Largest &amp; Smallest number from array</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    I. Assembly Language - Counter Programs
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Decimal UP-Counter</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Decimal DOWN-Counter</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Hexadecimal UP-Counter</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Hexadecimal DOWN-Counter</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    II. C Programming
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Sum of first 10 Integer Numbers</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Factorial of a given number</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Square of a number (1 to 10) using Look-Up Table</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Count Ones and Zeros in two consecutive memory locations</label></li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title" onclick="toggleModule(this)">
+                    III. Hardware Interfacing Programs
+                    <span class="toggle-icon">&#9660;</span>
+                </div>
+                <ul class="module-topics">
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Rotate Stepper Motor (Clockwise &amp; Anti-Clockwise)</label></li>
+                    <li><input type="checkbox" onchange="updateProgress(this)"><label>Generate Sine &amp; Square Waveforms using DAC Interface</label></li>
+                </ul>
+            </div>
+
+            <div class="textbooks">
+                <h3>Text Book</h3>
+                <ul>
+                    <li>V. Udayashankara &amp; M.S. Mallikarjuna Swamy, "The 8051 Microcontroller: Hardware, Software and Applications", McGraw Hill, 1st Edition, 2017</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Load saved state from localStorage
+        function loadState() {
+            const saved = localStorage.getItem('syllabusChecklist');
+            if (saved) {
+                const state = JSON.parse(saved);
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach((cb, index) => {
+                    if (state[index]) {
+                        cb.checked = true;
+                        cb.nextElementSibling.classList.add('checked');
+                    }
+                });
+            }
+        }
+
+        // Save state to localStorage
+        function saveState() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const state = {};
+            checkboxes.forEach((cb, index) => {
+                if (cb.checked) state[index] = true;
+            });
+            localStorage.setItem('syllabusChecklist', JSON.stringify(state));
+        }
+
+        // Update progress bar and label styling
+        function updateProgress(checkbox) {
+            const label = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                label.classList.add('checked');
+            } else {
+                label.classList.remove('checked');
+            }
+
+            const all = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const total = all.length;
+            const done = checked.length;
+            const pct = total > 0 ? (done / total * 100) : 0;
+
+            document.getElementById('overallProgress').style.width = pct + '%';
+            document.getElementById('overallProgressText').textContent = done + ' / ' + total + ' topics completed';
+
+            saveState();
+        }
+
+        // Toggle module collapse/expand
+        function toggleModule(el) {
+            const topics = el.nextElementSibling;
+            topics.classList.toggle('hidden');
+            el.classList.toggle('collapsed');
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            loadState();
+            // Trigger progress update
+            const first = document.querySelector('input[type="checkbox"]');
+            if (first) updateProgress(first);
+        });
+    </script>
+</body>
+</html>
